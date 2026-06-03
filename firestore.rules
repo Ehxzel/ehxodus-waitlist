@@ -1,0 +1,65 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Waitlist submissions ─────────────────────────────────────────────────
+    match /waitlist/{docId} {
+
+      // No client can read any waitlist document — export via Admin SDK only
+      allow read: if false;
+
+      // Allow a write only when all required fields are present and valid
+      allow create: if
+        request.resource.data.keys().hasAll(['name', 'email', 'source']) &&
+        request.resource.data.name is string &&
+        request.resource.data.name.size() > 0 &&
+        request.resource.data.name.size() <= 200 &&
+        request.resource.data.email is string &&
+        request.resource.data.email.size() > 0 &&
+        request.resource.data.email.size() <= 320 &&
+        request.resource.data.source is string &&
+        (!request.resource.data.keys().hasAny(['linkedIn']) ||
+          request.resource.data.linkedIn is string &&
+          request.resource.data.linkedIn.size() <= 2000) &&
+        (!request.resource.data.keys().hasAny(['building']) ||
+          request.resource.data.building is string &&
+          request.resource.data.building.size() <= 2000) &&
+        (!request.resource.data.keys().hasAny(['challenge']) ||
+          request.resource.data.challenge is string &&
+          request.resource.data.challenge.size() <= 2000);
+
+      // Nobody can update or delete from the client
+      allow update, delete: if false;
+    }
+
+    // ── Direct inquiry submissions ───────────────────────────────────────────
+    match /direct_inquiries/{docId} {
+
+      allow read: if false;
+
+      allow create: if
+        request.resource.data.keys().hasAll(['name', 'email', 'source']) &&
+        request.resource.data.name is string &&
+        request.resource.data.name.size() > 0 &&
+        request.resource.data.name.size() <= 200 &&
+        request.resource.data.email is string &&
+        request.resource.data.email.size() > 0 &&
+        request.resource.data.email.size() <= 320 &&
+        request.resource.data.source is string &&
+        (!request.resource.data.keys().hasAny(['linkedIn']) ||
+          request.resource.data.linkedIn is string &&
+          request.resource.data.linkedIn.size() <= 2000) &&
+        (!request.resource.data.keys().hasAny(['situation']) ||
+          request.resource.data.situation is string &&
+          request.resource.data.situation.size() <= 5000);
+
+      allow update, delete: if false;
+    }
+
+    // ── Everything else — deny by default ───────────────────────────────────
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
