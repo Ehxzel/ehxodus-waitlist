@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import Hero from './components/Hero'
 import DossierCards from './components/DossierCards'
 import WaitlistForm from './components/WaitlistForm'
@@ -279,6 +280,7 @@ export default function App() {
           </ScrollReveal>
         </div>
       </div>
+      <Analytics />
     </div>
   )
 }

@@ -2,7 +2,7 @@ import { useState, useEffect, Fragment } from 'react'
 import { motion } from 'framer-motion'
 
 // Offer closes 5 days after launch (2026-06-03)
-const DEADLINE = new Date('2026-06-08T00:00:00Z').getTime()
+const DEADLINE = new Date('2026-06-09T00:00:00Z').getTime()
 
 const DIGIT_FONT: React.CSSProperties = {
   fontFamily: 'Orbitron, monospace',
@@ -169,7 +169,7 @@ export default function CountdownTimer() {
 
         <p
           className="mt-4 sm:mt-6 text-center text-[10px] sm:text-xs"
-          style={{ color: 'hsl(0 0% 28%)', fontFamily: 'Merriweather, serif', letterSpacing: '0.04em' }}
+          style={{ color: 'hsl(0, 100%, 50%)', fontFamily: 'Merriweather, serif', letterSpacing: '0.04em' }}
         >
           Sign up before this window closes to unlock the full intel package.
         </p>

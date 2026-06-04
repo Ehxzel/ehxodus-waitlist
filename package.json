@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "firebase": "^10.14.1",
     "framer-motion": "^11.2.10",
     "posthog-js": "^1.379.1",
