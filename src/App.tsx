@@ -68,7 +68,7 @@ export default function App() {
             Firebase is not configured — form submissions will fail.
           </p>
           <span className="text-xs" style={{ color: 'hsl(0 0% 14%)', fontFamily: 'Merriweather, serif' }}>
-            Copy <code className="px-1 rounded" style={{ background: 'hsl(40 90% 38%)', fontFamily: 'monospace' }}>.env.example</code> → <code className="px-1 rounded" style={{ background: 'hsl(40 90% 38%)', fontFamily: 'monospace' }}>.env</code> and add your Firebase credentials.
+            Copy <code className="px-1 rounded" style={{ background: 'hsl(40 90% 38%)', fontFamily: 'monospace' }}>.env</code> → <code className="px-1 rounded" style={{ background: 'hsl(40 90% 38%)', fontFamily: 'monospace' }}>.env</code> and add your Firebase credentials.
           </span>
         </div>
       )}
