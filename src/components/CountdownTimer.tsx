@@ -1,8 +1,8 @@
 import { useState, useEffect, Fragment } from 'react'
 import { motion } from 'framer-motion'
 
-// Offer closes 5 days after launch (2026-06-03)
-const DEADLINE = new Date('2026-06-09T00:00:00Z').getTime()
+// Offer closes 5 days after launch (2026-06-15T00:00:00Z)
+const DEADLINE = new Date('2026-06-15T00:00:00Z').getTime()
 
 const DIGIT_FONT: React.CSSProperties = {
   fontFamily: 'Orbitron, monospace',
